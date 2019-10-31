@@ -3,7 +3,8 @@
 Repositório criado para armazenar meus exercícios e trabalho referentes ao componente curricular obrigatório Grafos, cursado no de Bacharel em Ciência da computação na Universidade Federal da Fronteira Sul, campus Chapecó/SC.
 
 ## Trabalhos ##
-[Implementação de Buscas](https://github.com/ruanpato/gen254/tree/master/implementacao_de_buscas)
+- [Implementação de Buscas](https://github.com/ruanpato/gen254/tree/master/implementacao_de_buscas)
+- [Implementação de Árvores Geradoradoras](https://github.com/ruanpato/gen254/tree/master/arvore_geradora)
 
 ## Exercícios ##
 
