@@ -4,7 +4,7 @@ Repositório criado para armazenar meus exercícios e trabalho referentes ao com
 
 ## Trabalhos ##
 - [Implementação de Buscas](https://github.com/ruanpato/gen254/tree/master/implementacao_de_buscas)
-- [Implementação de Árvores Geradoradoras](https://github.com/ruanpato/gen254/tree/master/arvore_geradora)
+- [Implementação de Árvores Geradoras](https://github.com/ruanpato/gen254/tree/master/arvore_geradora)
 
 ## Exercícios ##
 
