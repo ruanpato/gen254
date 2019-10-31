@@ -1,4 +1,4 @@
-# Implementação de buscas
+# Implementação árvores geradoras
 
 Este trabalho compõe parte da primeira Nota Parcial (NP2) do componente curricular obrigatório Grafos cursado no segundo semestre de 2019 na Universidade Federal da Fronteira Sul, Campus Chapecó.
 
