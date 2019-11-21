@@ -1,4 +1,4 @@
-# Implementação árvores geradoras
+# Implementação árvores geradoras #
 
 Este trabalho compõe parte da primeira Nota Parcial (NP2) do componente curricular obrigatório Grafos cursado no segundo semestre de 2019 na Universidade Federal da Fronteira Sul, Campus Chapecó.
 
@@ -11,10 +11,10 @@ Dada uma matriz de incidência ou adjacência de um grafo não-orientado, implem
 
 Uma função deve ser implementada para cada tipo de busca (2 funções no total). Exemplo:  
 ```c++
-    arvore_prim(matriz, inicio)
+    arvore_prim(matriz, inicio) :heavy_check_mark:
     arvore_kruskal(matriz)
 ```  
-**Retorno:** A função deve executar a montagem da árvore independente do tipo de matriz fornecidacomo entrada.  
+**Retorno:** A função deve executar a montagem da árvore independente do tipo de matriz fornecida como entrada.  
 
 O trabalho pode ser escrito em ​ python​ ou ​ C/C++​ .  
 
