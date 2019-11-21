@@ -10,10 +10,10 @@ Dada uma matriz de incidência ou adjacência de um grafo não-orientado, implem
 - Montagem da árvore geradora com Algoritmo de Kruskal.  
 
 Uma função deve ser implementada para cada tipo de busca (2 funções no total). Exemplo:  
-```c++
-    arvore_prim(matriz, inicio) :heavy_check_mark:
-    arvore_kruskal(matriz)
-```  
+  
+    arvore_prim(matriz, inicio) :heavy_check_mark:  
+    arvore_kruskal(matriz)  
+  
 **Retorno:** A função deve executar a montagem da árvore independente do tipo de matriz fornecida como entrada.  
 
 O trabalho pode ser escrito em ​ python​ ou ​ C/C++​ .  
