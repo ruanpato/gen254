@@ -12,7 +12,7 @@ Dada uma matriz de incidência ou adjacência de um grafo não-orientado, implem
 Uma função deve ser implementada para cada tipo de busca (2 funções no total). Exemplo:  
   
     arvore_prim(matriz, inicio) :heavy_check_mark:  
-    arvore_kruskal(matriz)  
+    arvore_kruskal(matriz)  :heavy_check_mark:  
   
 **Retorno:** A função deve executar a montagem da árvore independente do tipo de matriz fornecida como entrada.  
 

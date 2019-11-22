@@ -1,15 +1,43 @@
 #include <iostream>
+#include <algorithm>
 #include <vector>
 #include <queue>
 #include <string.h>
 #define MAX 11234
-#define INF 2147483647 // Int ceil
+#define INF 2147483647 // Integer "ceil"
 #define lli long long int
 
 using namespace std;
 
-long long int cost = 0;
 int G[MAX][MAX], queue_aux[MAX], v, e, n, matrix_type, qt_digits; // n == number_of_vertix, if matrix_type == 0 is adjacency, else is incidence
+vector<pair<long long int, pair<int, int>>> edge_list; // (weight, two vertices) of the edge
+class Union_Find{
+    private:
+        vector<int> parent, rank;
+    public:
+        Union_Find(int v){
+            rank.assign(v+1, 0);
+            parent.assign(v+1, 0);
+            for(int i = 0; i <= v; i++) parent[i] = i;
+        }
+        int find(int i){
+            while(i != parent[i]) i = parent[i];
+            return i;
+        }
+        bool is_same_set(int i, int j){
+            return find(i) == find(j);
+        }
+        void union_set(int i, int j){
+            if(is_same_set(i, j)) return;
+            int x = find(i), y = find(j);
+            if(rank[x] > rank[y]) parent[y] = x;
+            else{
+                parent[x] = y;
+                if(rank[x] == rank[y]) rank[y]++;
+            }
+        }
+};
+
 // =============== <Function Prototype Area> ============= //
 // #                   Arguments: N/A                    # //
 // #                    Returns: N/A                     # //
@@ -21,6 +49,8 @@ void clear();
 // #    Description: This function count the number of   # //
 // #                         digits of a integer value   # //
 int digits_of_integer(int x);
+
+void kruskal();
 
 // #                   Arguments: N/A                    # //
 // #                    Returns: N/A                     # //
@@ -92,7 +122,7 @@ int main(){
     clear();
     int start, op;
     do{
-        cout << "1. Print all graph.\n2. Prim.\n3. Kruskal.\n4. Print a x-vertix and adjacency.\n0. Exit\n->";
+        cout << "1. Print all graph.\n2. Prim.\n3. Kruskal.\n4. Print all edges.\n5. Print a x-vertix and adjacency.\n0. Exit\n->";
         cin >> op;
         switch (op){
         case 0:
@@ -111,7 +141,16 @@ int main(){
             else
                 cout << "Inválid vertix value.\n";
             break;
+        case 3:
+            kruskal();
+            break;
         case 4:
+            cout << " Edge   Weight\n";
+            for (auto x : edge_list){
+                cout << "[" << x.second.first << "-" << x.second.second << "] (" << x.first << ")\n";
+            }
+            break;
+        case 5:
             clear();
             cout << "Type the vertix number.\n->";
             cin >> start;
@@ -129,6 +168,14 @@ int main(){
     return 0;
 }
 
+
+// Undirected graph
+void add_edge(vector<pair<int, int>> adj[], int w, int u, int v){ // Add a edge (origin Adjacency Matrix)
+    adj[u].push_back(make_pair(v, w));
+    adj[v].push_back(make_pair(u, w));
+    edge_list.push_back(make_pair((long long int)w, make_pair(u, v)));
+}
+
 // #                   Arguments: N/A                    # //
 // #                    Returns: N/A                     # //
 // #      Description: This function clear console       # //
@@ -137,10 +184,23 @@ void clear() {
     std::cout << "\x1B[2J\x1B[H";
 }
 
-//
-void add_edge(vector<pair<int, int>> adj[], int w, int u, int v){ // Add a edge (origin Adjacency Matrix)
-    adj[u].push_back(make_pair(v, w));
-    adj[v].push_back(make_pair(u, w));
+void kruskal(){
+    long long int cost = 0;
+    Union_Find UF(v); // vertix
+    pair<long long int, pair<int, int>> edge;
+    sort(edge_list.begin(), edge_list.end());
+
+    cout << "  Edge     Weight      \n";
+    for(int i = 0; i < e; i++){//edges
+        edge = edge_list[i];
+        if(!UF.is_same_set(edge.second.first, edge.second.second)){
+            cost += edge.first;
+            cout << edge.second.first << " - " << edge.second.second << "    " << edge.first << '\n';
+            UF.union_set(edge.second.first, edge.second.second);
+        }
+    }
+    cout << "Cost = " << cost << "\n";
+
 }
 
 void print_graph(vector<pair<int, int>> adj[]){
@@ -169,7 +229,7 @@ void prim(vector<pair<int, int>> adj[], int start){
     pair<int, pair<int, int>> vertix, front;
     int u, w, o;
 
-    cost = 0;
+    long long int cost = 0;
     // Put in PQ the adjacency vertix
     for (auto x : adj[start]){
         pq.push(make_pair(-x.second, make_pair(-x.first, start))); // w first to order pq by weight, u is destination, and last is origin
